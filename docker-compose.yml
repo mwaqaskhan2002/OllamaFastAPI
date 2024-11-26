@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  ollama-fastapi:
+    build: .
+    ports:
+      - "8080:8080"
+      - "11434:11434"
+    volumes:
+      - ollama-models:/data
+    environment:
+      - SOME_ENV_VARIABLE=value  # Replace with any environment variables you need
+    restart: unless-stopped
+    # Optionally, specify dependencies like waiting for the Ollama server:
+    # depends_on:
+    #   - ollama-server
+
+volumes:
+  ollama-models:
